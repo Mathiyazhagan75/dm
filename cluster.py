@@ -320,3 +320,28 @@ class KMeansClustering:
 # print("Silhouette Score, Calinski Harabasz Score, Davies Bouldin Score:", kmeans_clustering.internal_measures(kmeans))
 # print("Adjusted Rand Score, Normalized Mutual Info Score, Homogeneity, Completeness, V Measure:", kmeans_clustering.external_measures(kmeans))
 
+
+#Silhouette Score: It ranges from -1 to 1. Higher values indicate denser and well-separated clusters. A score closer to 1 suggests that samples are far away from neighboring clusters.
+
+#Calinski-Harabasz Score: Also known as the Variance Ratio Criterion, it computes the ratio of dispersion between and within clusters. Higher values indicate better-defined clusters.
+
+#Davies-Bouldin Score: It computes the average similarity between each cluster and its most similar one, where similarity is the ratio of within-cluster distances to between-cluster distances. Lower values indicate better clustering.
+
+#Adjusted Rand Score: It measures the similarity between the true labels and the cluster assignments. It ranges from -1 to 1, where 1 indicates perfect labeling agreement.
+
+#Normalized Mutual Information Score: It measures the agreement of the clustering with the ground truth labels, adjusted for chance. It ranges from 0 to 1, where 1 indicates perfect agreement.
+
+#Homogeneity, Completeness, and V-measure: These are three related metrics. Homogeneity measures whether each cluster contains only members of a single class. Completeness measures whether all members of a given class are assigned to the same cluster. V-measure is the harmonic mean of homogeneity and completeness.
+
+
+#Silhouette Score: Higher values indicate denser and well-separated clusters. The second set of results has a slightly higher silhouette score, suggesting better clustering in terms of cluster cohesion and separation.
+
+#Calinski-Harabasz Score: Higher values indicate better-defined clusters. Again, the second set of results has a significantly higher Calinski-Harabasz score, indicating better clustering quality.
+
+#Davies-Bouldin Score: Lower values indicate better clustering. The first set of results has a lower Davies-Bouldin score, suggesting slightly better clustering in terms of compactness and separation.
+
+#Adjusted Rand Score: Higher values indicate better agreement between true labels and cluster assignments. The second set of results has a higher Adjusted Rand Score, suggesting better agreement.
+
+#Normalized Mutual Information Score: Higher values indicate better agreement between true labels and cluster assignments. The second set of results has a higher Normalized Mutual Information Score, indicating better agreement.
+
+#Homogeneity, Completeness, and V-measure: These three metrics collectively measure the agreement of the clustering with the ground truth labels. All three metrics are higher in the second set of results, indicating better clustering performance in terms of capturing the true underlying structure of the data.
