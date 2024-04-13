@@ -354,6 +354,19 @@ from sklearn.feature_selection import RFE
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 
+from sklearn.preprocessing import LabelEncoder
+
+def encode(df):
+    le = LabelEncoder()
+
+    for col in df.columns:
+        if df[col].dtype == object:
+            df[col] = le.fit_transform(df[col])
+
+    return df
+
+training_df = encode(training_df)
+
 #Silhouette Score: It ranges from -1 to 1. Higher values indicate denser and well-separated clusters. A score closer to 1 suggests that samples are far away from neighboring clusters.
 
 #Calinski-Harabasz Score: Also known as the Variance Ratio Criterion, it computes the ratio of dispersion between and within clusters. Higher values indicate better-defined clusters.
