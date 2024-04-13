@@ -320,6 +320,39 @@ class KMeansClustering:
 # print("Silhouette Score, Calinski Harabasz Score, Davies Bouldin Score:", kmeans_clustering.internal_measures(kmeans))
 # print("Adjusted Rand Score, Normalized Mutual Info Score, Homogeneity, Completeness, V Measure:", kmeans_clustering.external_measures(kmeans))
 
+def remove_features(X, threshold):
+    selector = VarianceThreshold(threshold=threshold)
+    selector.fit(X)
+
+    selected_features = X.columns[selector.get_support()]
+    
+    return selected_features
+
+selected_features = remove_features(X_train, 0.0001)
+X_train = X_train[selected_features]
+def correlated_features(X):
+
+    correlation_matrix = X.corr().abs()
+    highly_correlated_features = set()
+
+    for i in range(len(correlation_matrix.columns)):
+        for j in range(i):
+            if correlation_matrix.iloc[i, j] > threshold:
+                highly_correlated_features.add(correlation_matrix.columns[i])
+
+    return highly_correlated_features
+
+correlated_features = correlated_features(X_train)
+X_train = X_train.drop(columns = correlated_features)
+def feature_selection(self, estimator, n_features_to_select):
+        selector = RFE(estimator, n_features_to_select=n_features_to_select)
+        selector = selector.fit(self.X_train, self.Y_train)
+        selected_features = self.X_train.columns[selector.support_]
+        self.X_train = self.X_train[selected_features]
+        self.X_test = self.X_test[selected_features]
+from sklearn.feature_selection import RFE
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.neighbors import KNeighborsClassifier
 
 #Silhouette Score: It ranges from -1 to 1. Higher values indicate denser and well-separated clusters. A score closer to 1 suggests that samples are far away from neighboring clusters.
 
